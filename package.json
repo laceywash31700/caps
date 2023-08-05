@@ -1,0 +1,23 @@
+{
+  "name": "caps",
+  "version": "1.0.0",
+  "description": "Event Driven Development Practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laceywash31700/caps.git"
+  },
+  "author": "Lacey W.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laceywash31700/caps/issues"
+  },
+  "homepage": "https://github.com/laceywash31700/caps#readme",
+  "dependencies": {
+    "jest": "^29.6.2",
+    "supertest": "^6.3.3"
+  }
+}
