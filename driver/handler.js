@@ -3,24 +3,24 @@
 const events = require('../eventPool');
 
 function delivered(data) {
-  const order = data.payload.orderId;
-  events.emit('Delivered', { event: 'Delivered', order });
+  const orderId = data.payload.orderId;
+  events.emit('Delivered', { event: 'Delivered', orderId });
 }
 
 function enRoute(data) {
-  const route = data.payload.address;
-  const order = data.payload.orderId;
-  events.emit('In-Transit', { event: 'In-Transit', route, order });
+  const address = data.payload.address;
+  const orderId = data.payload.orderId;
+  events.emit('In-Transit', { event: 'In-Transit', address, orderId });
   setInterval(() => {
-    delivered(data.payload);
+    delivered(data);
   }, 200);
 }
 function pickedUp(data) {
-  const order = data.payload.orderId;
-  const route = data.payload.address;
+  const orderId = data.payload.orderId;
+  const address = data.payload.address;
   const time = Date.now().getTime();
 
-  events.emit('Picked-Up', { event: 'Picked-Up', order, route, time });
+  events.emit('Picked-Up', { event: 'Picked-Up', orderId , address , time });
 
   enRoute(data.payload);
 }
