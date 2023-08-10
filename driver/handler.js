@@ -1,27 +1,24 @@
 'use strict';
-
-const events = require('../eventPool');
+const event = require('../utility.js');
 
 function delivered(data) {
-  const orderId = data.payload.orderId;
-  events.emit('Delivered', { event: 'Delivered', orderId });
+  const orderId = data.orderId;
+  driver.emit(event.delivered, { event: 'Delivered', orderId });
 }
 
 function enRoute(data) {
-  const address = data.payload.address;
-  const orderId = data.payload.orderId;
-  events.emit('In-Transit', { event: 'In-Transit', address, orderId });
+  const address = data.address;
+  const orderId = data.orderId;
+  driver.emit(event.inTransit, { event: 'In-Transit', address, orderId });
   setInterval(() => {
     delivered(data);
-  }, 200);
+  }, 10000);
 }
 function pickedUp(data) {
   const orderId = data.payload.orderId;
   const address = data.payload.address;
-  const time = Date.now().getTime();
-
-  events.emit('Picked-Up', { event: 'Picked-Up', orderId , address , time });
-
+  const time = Date.now();
+  driver.emit(event.pickedUp, { event: 'Picked-Up', orderId , address , time });
   enRoute(data.payload);
 }
 
