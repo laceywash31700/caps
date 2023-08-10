@@ -2,15 +2,16 @@
 
 
 function driverPickedUp(data){
-  console.log(`DRIVER: PickedUp order ${data.payload.orderId} from warehouse 25b0`);
+  console.log(`DRIVER: PickedUp order ${data.data.payload.orderId} from warehouse 25b0`);
 }
 
 function driverEnRoute(data){
-  console.log(`DRIVER: enRoute to ${data.payload.customer}`);
+  console.log('+++++++++',data);
+  console.log(`DRIVER: enRoute to ${data.customer}`);
 }
 
 function driverDelivered(data){
-  console.log(`DRIVER: delivered Up ${data.payload.orderId} to ${data.payload.address} at ${Date.now().getTime()}`);
+  console.log(`DRIVER: delivered Up ${data.orderId} to ${data.address} at ${Date.now()}`);
 }
 
 
