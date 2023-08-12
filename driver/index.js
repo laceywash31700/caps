@@ -8,7 +8,7 @@ const {pickedUp} = require('./handler.js');
 const driver = io('ws://localhost:3000');
 
 driver.on(event.acknowledged, (data) => console.log(data.message));
-driver.on(event.pickReady, pickedUp);
+driver.on(event.pickUpReady, (data) => pickedUp(data, driver));
 
 
 module.exports = { driver };
