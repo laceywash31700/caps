@@ -18,7 +18,6 @@ function handlePickUp(data, socket) {
     const driverSocket = driverQueue.dequeue();
     driverSocket.emit(event.pickUpReady, data);
   }
-  io.emit(event.pickUpReady, data );
 }
 
 function handlePickedUp(data, socket) {

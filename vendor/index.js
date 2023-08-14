@@ -13,11 +13,9 @@ vendor.on(event.pickedUp, driverPickedUp);
 vendor.on(event.inTransit, driverEnRoute);
 vendor.on(event.delivered, driverDelivered);
 
+module.exports = { vendor };
 
 setInterval(() => {
   console.log('------------------');
   startVendor(vendor);
 }, 5000);
-
-
-module.exports = { vendor };
