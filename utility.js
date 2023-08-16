@@ -1,5 +1,5 @@
 'use strict';
-const chance = require('chance');
+const chance = require('chance')();
 
 let event = {
   pickUpReady: 'Pick-Up Ready',
